@@ -1,7 +1,7 @@
 {
   "name": "booking-hotel",
   "version": "0.1.0",
-  "homepage": "https://nestorvdev.github.io/ProyectoIntegradorCTD",
+  "homepage": "https://nestorvdev.github.io/hotel",
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^2.11.0",
