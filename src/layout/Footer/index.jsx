@@ -17,7 +17,7 @@ function Footer({ showBurger }) {
         <footer className={`${Styles.footer} ${StylesApp.delimiter}`} >
             <div className={`${Styles.delimiterChild} ${StylesApp.delimiterChild} `}>
                 <div>
-                    <h3 className={Styles.footerTittle} >2021 @ World Guest Booking</h3>
+                    <h3 className={Styles.footerTittle} >@ World Guest Booking</h3>
                 </div>
                 <div className={Styles.icons}>
                     <a href="https://www.facebook.com/profile.php?id=100074545225635" target="_blank" rel="noreferrer"><img className={Styles.iconsImg} src={logoFacebook} alt="" /></a>
