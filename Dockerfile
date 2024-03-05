@@ -1,18 +1,15 @@
 #
-# Build stage React
+# Build stage Java
 #
-FROM node:14.16.0 as build-deps
-WORKDIR /usr/src/app
-COPY package.json ./
-RUN npm install
-COPY . ./
-RUN npm run build
+FROM maven:3.6.0-jdk-11-slim AS build-back
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package -U
 
 #
-# Serve stage React
+# Package stage Java
 #
-FROM httpd
-COPY ./.htaccess /usr/local/apache2/htdocs/
-COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
-COPY --from=build-deps /usr/src/app/build/ /usr/local/apache2/htdocs/
-EXPOSE 80
+FROM openjdk:11-jre-slim
+COPY --from=build-back /home/app/target/integrador-0.0.1-SNAPSHOT.jar /usr/local/lib/app.jar
+ENTRYPOINT ["java", "-jar", "/usr/local/lib/app.jar"]
+EXPOSE 8080
