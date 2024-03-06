@@ -73,6 +73,7 @@ function App() {
     <BrowserRouter>      
       <LayoutPrincipal setLastLocation={setLastLocation} setBookingWithoutLogin={setBookingWithoutLogin} setLoading={setLoading} iniciales={iniciales} userName={userName} userSurname={userSurname} isLogged = {log} activeCreate ={activeCreate} activeLogin = {activeLogin} handleClean={handleClean} handleFavourite={handleFavourite}>
         <Switch>
+          <Redirect from="/hotel" to="/"></Redirect>
           <Route exact path="/">
             <Home productoErroneo={productoErroneo} setProductoErroneo={setProductoErroneo} loading={loading} setLastLocation={setLastLocation} setActiveCreate = {setActiveCreate} setActiveLogin ={setActiveLogin} category= {category} handleCategory={handleCategory} search={search} handleClean={handleClean} handleSearch={handleSearch} city={city} handleCity={handleCity} clickBusqueda = {clickBusqueda} favourite= {favourite} clickSeeFavourites = {clickSeeFavourites} setCategory={setCategory} setCity={setCity} setStartDate={setStartDate} setEndDate={setEndDate} startDate={startDate} endDate={endDate} setFavourite={setFavourite} setSearch={setSearch} />
           </Route>
