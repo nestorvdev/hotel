@@ -1,8 +1,11 @@
 /*COMPONENTE CARDS*/
 import axios from "axios";
+import * as Constants from "../../constants";
 const { format } = require("date-fns");
 
-const baseUrl = "http://worldguestbooking.com.ar:8080/"
+const baseUrl = Constants.URL_BACKEND;
+
+
 
 //YA TESTEADO
 

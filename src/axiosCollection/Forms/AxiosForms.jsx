@@ -1,5 +1,8 @@
 import axios from "axios";
-const baseUrl = "http://worldguestbooking.com.ar:8080/"
+import * as Constants from "../../constants";
+
+const baseUrl = Constants.URL_BACKEND;
+
 
 function AxiosLogin(email, password, setFormValido, setLog, setError, setEmail, setPassword, setLoading, lastLocation) {
     axios.post(baseUrl + "users/login", {

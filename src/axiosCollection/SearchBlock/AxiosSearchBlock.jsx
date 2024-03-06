@@ -1,6 +1,7 @@
 import axios from "axios";
+import * as Constants from "../../constants";
 
-const baseURL = "http://worldguestbooking.com.ar:8080/";
+const baseURL = Constants.URL_BACKEND;
 
 function AxiosGetAllCities(setData, setErrorMessage){
     axios.get(`${baseURL}cities/all`)

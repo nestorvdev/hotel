@@ -1,6 +1,8 @@
 import axios from "axios";
+import * as Constants from "../../constants";
 
-const baseUrl = "http://worldguestbooking.com.ar:8080/"
+const baseUrl = Constants.URL_BACKEND;
+
 
 
 function AxiosCrearReserva(arrivalSchedule, formatDate, checkin, checkout, id, openModalSucceed, setErrorBooking) {

@@ -1,8 +1,13 @@
 import axios from "axios";
-const baseURL = "http://worldguestbooking.com.ar:8080/";
+import * as Constants from "../../constants";
+
+const baseURL = Constants.URL_BACKEND;
+
+
 
 //YA TESTEADO
 function AxiosGetProductById(id, setProd, setLoading, setErrorMessage) {
+
   axios
     .get(`${baseURL}products/get/${id}`)
     .then((response) => {

@@ -1,5 +1,8 @@
 import axios from "axios";
-const baseURL = "http://worldguestbooking.com.ar:8080/"
+import * as Constants from "../../constants";
+
+const baseURL = Constants.URL_BACKEND;
+
 
 function AxiosGetReservationsByUserId(setData, setLoading, setErrorMessage){
     axios.get(`${baseURL}reservations/get/user/${sessionStorage.getItem("id")}`)
