@@ -70,11 +70,14 @@ function App() {
   } 
 
   return ( 
-    <BrowserRouter>      
+    <BrowserRouter>
       <LayoutPrincipal setLastLocation={setLastLocation} setBookingWithoutLogin={setBookingWithoutLogin} setLoading={setLoading} iniciales={iniciales} userName={userName} userSurname={userSurname} isLogged = {log} activeCreate ={activeCreate} activeLogin = {activeLogin} handleClean={handleClean} handleFavourite={handleFavourite}>
         <Switch>
-          <Redirect from="/hotel" to="/"></Redirect>
+
           <Route exact path="/">
+            <Home productoErroneo={productoErroneo} setProductoErroneo={setProductoErroneo} loading={loading} setLastLocation={setLastLocation} setActiveCreate = {setActiveCreate} setActiveLogin ={setActiveLogin} category= {category} handleCategory={handleCategory} search={search} handleClean={handleClean} handleSearch={handleSearch} city={city} handleCity={handleCity} clickBusqueda = {clickBusqueda} favourite= {favourite} clickSeeFavourites = {clickSeeFavourites} setCategory={setCategory} setCity={setCity} setStartDate={setStartDate} setEndDate={setEndDate} startDate={startDate} endDate={endDate} setFavourite={setFavourite} setSearch={setSearch} />
+          </Route>
+          <Route exact path="/hotel">
             <Home productoErroneo={productoErroneo} setProductoErroneo={setProductoErroneo} loading={loading} setLastLocation={setLastLocation} setActiveCreate = {setActiveCreate} setActiveLogin ={setActiveLogin} category= {category} handleCategory={handleCategory} search={search} handleClean={handleClean} handleSearch={handleSearch} city={city} handleCity={handleCity} clickBusqueda = {clickBusqueda} favourite= {favourite} clickSeeFavourites = {clickSeeFavourites} setCategory={setCategory} setCity={setCity} setStartDate={setStartDate} setEndDate={setEndDate} startDate={startDate} endDate={endDate} setFavourite={setFavourite} setSearch={setSearch} />
           </Route>
           <Route exact path="/login"  component={() => !log? <FormLogin lastLocation={lastLocation} bookingWithoutLogin={bookingWithoutLogin} setLoading={setLoading} setLog={setLog} setActiveCreate = {setActiveCreate} setActiveLogin ={setActiveLogin}/> : <Redirect to={`${lastLocation}`}/>} />                  
@@ -84,8 +87,7 @@ function App() {
           <Route exact path={"/product/update"} component={() => role === "ADMIN" && <UpdateProduct goBack={goBack}/>} />
           <Route exact path={"/product/:id"} render={() => <Product setBookingWithoutLogin={setBookingWithoutLogin} goBack={goBack} setLastLocation={setLastLocation} lastLocation={lastLocation} />} />   
           <Route exact path={"/product/:id/reserva"} component={Booking}/>    
-          <Route exact path={"/mybookings"} component={() => <MyBookings goBack={goBack}/>}/>    
-          
+          <Route exact path={"/mybookings"} component={() => <MyBookings goBack={goBack}/>}/>
           <Route path="*"> <NotFound /> </Route>
         </Switch>
       </LayoutPrincipal>
