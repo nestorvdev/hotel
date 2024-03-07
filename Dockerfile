@@ -14,8 +14,11 @@
 #ENTRYPOINT ["java", "-jar", "/usr/local/lib/app.jar"]
 #EXPOSE 8080
 
-FROM openjdk:11-jre-slim
-VOLUME /tmp
-COPY target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+FROM maven:3-openjdk-11 AS build
+COPY  . .
+RUN mvn clean package -DskipTests
+
+FROM openjdk:11.0.16-jdk-slim
+COPY --from=build /target/*.jar app.jar
 EXPOSE 8080
+ENTRYPOINT ["java","-jar","app.jar"]
