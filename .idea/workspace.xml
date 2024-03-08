@@ -13,9 +13,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -37,7 +37,8 @@
     "Maven.integrador [package].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "bae958d1",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "8831d879",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -95,7 +96,9 @@
       <workItem from="1709758975614" duration="3330000" />
       <workItem from="1709834692000" duration="1745000" />
       <workItem from="1709836510886" duration="4719000" />
-      <workItem from="1709844082605" duration="4338000" />
+      <workItem from="1709844082605" duration="4552000" />
+      <workItem from="1709924821322" duration="689000" />
+      <workItem from="1709925521753" duration="535000" />
     </task>
     <servers />
   </component>
