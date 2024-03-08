@@ -92,14 +92,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/**");
     }
 
-    @Bean
+       @Bean
     CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://3.214.98.239","https://nestorvdev.github.io" ,"http://worldguestbooking.com.ar"));
+        configuration.setAllowedOrigins(List.of(
+                "https://nestorvdev.github.io/" , "https://nestorvdev.github.io/"));
                 configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowCredentials(true);
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/*", new CorsConfiguration().applyPermitDefaultValues());
+        //source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        source.registerCorsConfiguration("/**", configuration.applyPermitDefaultValues());
         return source;
     }
 
