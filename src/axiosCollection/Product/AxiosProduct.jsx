@@ -175,7 +175,7 @@ function AxiosCrearProducto(
 
   axios
     .post(
-      "http://worldguestbooking.com.ar:8080/products/create",
+        `${baseURL}products/create`,
       {
         name,
         description,
@@ -203,7 +203,7 @@ function AxiosCrearProducto(
       setErrorProduct("");
       let idProduct = product.data.id;
       axios
-        .post(`http://worldguestbooking.com.ar:8080/products/scores/create`, {
+        .post(`products/scores/create`, {
           score: qualificationInt,
           userEmail: sessionStorage.getItem("email"),
           productId: idProduct,
@@ -214,7 +214,7 @@ function AxiosCrearProducto(
       images.forEach((image) => {
         axios
           .post(
-            `http://worldguestbooking.com.ar:8080/images/create`,
+              `${baseURL}images/create`,
             {
               title: image.title,
               url: image.url,
@@ -238,7 +238,8 @@ function AxiosCrearProducto(
       });
       axios
         .post(
-          `http://worldguestbooking.com.ar:8080/features/update/${idProduct}`,
+
+          `${baseURL}features/update/${idProduct}`,
           featuresInt,
           {
             headers: {
@@ -291,7 +292,7 @@ function AxiosModificarProducto(
   let qualificationInt = parseInt(qualification);
   axios
     .post(
-      "http://worldguestbooking.com.ar:8080/products/update",
+      `${baseURL}products/update`,
       {
         id: idProduct,
         name,
@@ -320,7 +321,7 @@ function AxiosModificarProducto(
       setErrorProduct("");
       let idProduct = product.data.id;
       axios
-        .post(`http://worldguestbooking.com.ar:8080/products/scores/create`, {
+        .post(`${baseURL}products/scores/create`, {
           score: qualificationInt,
           userEmail: sessionStorage.getItem("email"),
           productId: idProduct,
@@ -340,7 +341,7 @@ function AxiosModificarProducto(
       });
       axios
         .post(
-          `http://worldguestbooking.com.ar:8080/images/updateimagesperproduct`,
+          `${baseURL}images/updateimagesperproduct`,
           arrayImages,
           {
             headers: {
@@ -359,7 +360,7 @@ function AxiosModificarProducto(
       });
       axios
         .post(
-          `http://worldguestbooking.com.ar:8080/features/update/${idProduct}`,
+          `${baseURL}features/update/${idProduct}`,
           featuresInt,
           {
             headers: {
@@ -390,7 +391,7 @@ function AxiosFindScoreByIdUser(idProduct) {
   let email = sessionStorage.getItem("email");
   axios
     .get(
-      `http://worldguestbooking.com.ar:8080/products/scores/getByUserAndProduct/${email}/${idProduct}`,
+      `${baseURL}products/scores/getByUserAndProduct/${email}/${idProduct}`,
       {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem("token")}`,
