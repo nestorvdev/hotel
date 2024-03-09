@@ -1,4 +1,5 @@
 package com.proyecto.integrador.config;
+import com.google.common.collect.ImmutableList;
 import com.proyecto.integrador.config.jwt.JwtAuthenticationEntryPoint;
 import com.proyecto.integrador.config.jwt.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import javax.annotation.concurrent.Immutable;
 import java.util.List;
 
 
@@ -95,13 +97,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
        @Bean
     CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of(
-                "https://nestorvdev.github.io/" , "https://nestorvdev.github.io/"));
-                configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedOrigins(ImmutableList.of("*"));
+        //configuration.setAllowedOrigins(List.of("https://nestorvdev.github.io/" , "https://nestorvdev.github.io/","http://localhost:3000"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         configuration.setAllowCredentials(true);
+        configuration.setAllowedHeaders(ImmutableList.of("Authorization", "Cache-Control", "Content-Type"));
+
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         //source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-        source.registerCorsConfiguration("/**", configuration.applyPermitDefaultValues());
+        source.registerCorsConfiguration("/**", configuration);
         return source;
     }
 
