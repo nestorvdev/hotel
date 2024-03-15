@@ -21,6 +21,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.annotation.concurrent.Immutable;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -70,8 +71,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 */
 
         // We don't need CSRF for this example
-        System.err.println(httpSecurity.csrf().disable().cors()
+        System.err.println(httpSecurity.csrf().disable().cors().configurationSource(corsConfigurationSource())
                 .and().
+
                 // don't authenticate these requests
                         authorizeRequests()
                 .antMatchers(AUTH_WHITELIST)
@@ -94,14 +96,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/**");
     }
 
-       @Bean
+    @Bean
     CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(ImmutableList.of("*"));
         //configuration.setAllowedOrigins(List.of("https://nestorvdev.github.io/" , "https://nestorvdev.github.io/","http://localhost:3000"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedHeaders(Collections.singletonList("*"));
         configuration.setAllowCredentials(true);
-        configuration.setAllowedHeaders(ImmutableList.of("Authorization", "Cache-Control", "Content-Type"));
+        //configuration.setAllowedHeaders(ImmutableList.of("Authorization", "Cache-Control", "Content-Type"));
 
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         //source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
