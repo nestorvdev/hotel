@@ -71,7 +71,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 */
 
         // We don't need CSRF for this example
-        System.err.println(httpSecurity.csrf().disable().cors().configurationSource(corsConfigurationSource())
+        System.err.println("test2"+httpSecurity.csrf().disable().cors().configurationSource(corsConfigurationSource())
                 .and().
 
                 // don't authenticate these requests
